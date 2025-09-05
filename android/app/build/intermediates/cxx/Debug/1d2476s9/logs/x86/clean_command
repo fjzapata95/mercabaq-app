@@ -1,0 +1,4 @@
+/Volumes/MacExternal/User/Library/Android/sdk/cmake/3.22.1/bin/ninja \
+  -C \
+  /Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/.cxx/Debug/1d2476s9/x86 \
+  clean

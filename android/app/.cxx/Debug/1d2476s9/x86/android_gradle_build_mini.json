@@ -1,0 +1,31 @@
+{
+  "buildFiles": [
+    "/Volumes/MacExternal/Projects/Webtic/mercabaq-app/node_modules/react-native/ReactAndroid/cmake-utils/default-app-setup/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Volumes/MacExternal/User/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/.cxx/Debug/1d2476s9/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Volumes/MacExternal/User/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/.cxx/Debug/1d2476s9/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "appmodules::@6890427a1f51a3e7e1df": {
+      "artifactName": "appmodules",
+      "abi": "x86",
+      "output": "/Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/build/intermediates/cxx/Debug/1d2476s9/obj/x86/libappmodules.so",
+      "runtimeFiles": [
+        "/Volumes/MacExternal/User/.gradle/caches/8.10.2/transforms/0b396a6571faea36ef3e81439b17aeab/transformed/jetified-fbjni-0.6.0/prefab/modules/fbjni/libs/android.x86/libfbjni.so",
+        "/Volumes/MacExternal/User/.gradle/caches/8.10.2/transforms/8ab812ce1f3114aaddddfebd3794d6a8/transformed/jetified-react-android-0.76.3-debug/prefab/modules/jsi/libs/android.x86/libjsi.so",
+        "/Volumes/MacExternal/User/.gradle/caches/8.10.2/transforms/8ab812ce1f3114aaddddfebd3794d6a8/transformed/jetified-react-android-0.76.3-debug/prefab/modules/reactnative/libs/android.x86/libreactnative.so"
+      ]
+    }
+  }
+}

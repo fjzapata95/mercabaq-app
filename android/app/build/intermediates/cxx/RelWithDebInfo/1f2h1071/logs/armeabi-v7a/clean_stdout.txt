@@ -1,0 +1,7 @@
+ninja: Entering directory `/Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/.cxx/RelWithDebInfo/1f2h1071/armeabi-v7a'
+[0/2] Re-checking globbed directories...
+[1/2] Re-running CMake...
+-- Configuring incomplete, errors occurred!
+See also "/Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/.cxx/RelWithDebInfo/1f2h1071/armeabi-v7a/CMakeFiles/CMakeOutput.log".
+FAILED: build.ninja 
+/Volumes/MacExternal/User/Library/Android/sdk/cmake/3.22.1/bin/cmake --regenerate-during-build -S/Volumes/MacExternal/Projects/Webtic/mercabaq-app/node_modules/react-native/ReactAndroid/cmake-utils/default-app-setup -B/Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/.cxx/RelWithDebInfo/1f2h1071/armeabi-v7a

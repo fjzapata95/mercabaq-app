@@ -1,0 +1,7 @@
+#Thu Sep 04 16:20:15 COT 2025
+base.0=/Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
+base.1=/Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/build/intermediates/dex/release/mergeDexRelease/classes2.dex
+path.0=classes.dex
+path.1=classes2.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex

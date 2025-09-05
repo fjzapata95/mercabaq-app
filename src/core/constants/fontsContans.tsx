@@ -1,0 +1,17 @@
+export const Fonts = {
+    Volkswagen: 'Volkswagen-Serial-Black',
+    DMSansBold: 'DMSans-Bold',
+    DMSansBoldItalic: 'DMSans-BoldItalic',
+    DMSansSemiBold: 'DMSans-SemiBold',
+    DMSansLight: 'DMSans-Light',
+    DMSansRegular: 'DMSans-Medium',
+    DMSansMedium: 'DMSans-Regular',
+    InterSemiBold: 'Inter-SemiBold',
+    InterLight: 'Inter-Light',
+    InterRegular: 'Inter-Medium',
+    InterMedium: 'Inter-Regular',
+    ManropeBold: 'Manrope-Bold',
+    ManropeMedium: 'Manrope-Medium',
+    ManropeRegular: 'Manrope-Regular',
+    ManropeSemibold: 'Manrope-Semibold',
+};

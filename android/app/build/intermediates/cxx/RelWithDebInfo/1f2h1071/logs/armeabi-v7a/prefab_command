@@ -1,0 +1,22 @@
+"/Volumes/MacExternal/System/Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java" \
+  --class-path \
+  /Volumes/MacExternal/User/.gradle/caches/modules-2/files-2.1/com.google.prefab/cli/2.1.0/aa32fec809c44fa531f01dcfb739b5b3304d3050/cli-2.1.0-all.jar \
+  com.google.prefab.cli.AppKt \
+  --build-system \
+  cmake \
+  --platform \
+  android \
+  --abi \
+  armeabi-v7a \
+  --os-version \
+  24 \
+  --stl \
+  c++_shared \
+  --ndk-version \
+  26 \
+  --output \
+  /var/folders/w_/0891ksps3lv9ct7ttf2_l4v80000gn/T/agp-prefab-staging17461620641184310632/staged-cli-output \
+  /Volumes/MacExternal/User/.gradle/caches/8.10.2/transforms/e22db686052de5db7e11b56c613f5614/transformed/jetified-react-android-0.76.3-release/prefab \
+  /Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/build/intermediates/cxx/refs/react-native-reanimated/2m2k2p2k \
+  /Volumes/MacExternal/User/.gradle/caches/8.10.2/transforms/980b7ff86c93301c67cd267a4469b771/transformed/jetified-hermes-android-0.76.3-release/prefab \
+  /Volumes/MacExternal/User/.gradle/caches/8.10.2/transforms/0b396a6571faea36ef3e81439b17aeab/transformed/jetified-fbjni-0.6.0/prefab

@@ -1,0 +1,93 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/DMSans/DMSans-Bold.ttf",
+      "sha1": "778bb35f2dbe43bb29ca15cd642649cf2e6bacfd"
+    },
+    {
+      "path": "src/assets/fonts/DMSans/DMSans-BoldItalic.ttf",
+      "sha1": "dc676db068647ec3cb1ab43ce0b4fb532620c118"
+    },
+    {
+      "path": "src/assets/fonts/DMSans/DMSans-Italic.ttf",
+      "sha1": "7c0d2c307a8a11c45e177efced1d14c6abdcba7f"
+    },
+    {
+      "path": "src/assets/fonts/DMSans/DMSans-Light.ttf",
+      "sha1": "cb88a02cd4f884780e8935485739a16ad46f10ad"
+    },
+    {
+      "path": "src/assets/fonts/DMSans/DMSans-Medium.ttf",
+      "sha1": "dbe89bcef4c11289572450e6eacb77fda76c1ccb"
+    },
+    {
+      "path": "src/assets/fonts/DMSans/DMSans-MediumItalic.ttf",
+      "sha1": "3b524b51f5baf3b651579559d77cd27faa7d8f45"
+    },
+    {
+      "path": "src/assets/fonts/DMSans/DMSans-Regular.ttf",
+      "sha1": "ebeaed9f2b2f237f96c0028e86fa26294ba5da2c"
+    },
+    {
+      "path": "src/assets/fonts/DMSans/DMSans-SemiBold.ttf",
+      "sha1": "fa1443d6c5de4532886f152c24840b1d1588a8bc"
+    },
+    {
+      "path": "src/assets/fonts/Inter/Inter-Light.ttf",
+      "sha1": "8a6e2acc8d9c4fbbbbefc2fb34ebfcd8216c6b6e"
+    },
+    {
+      "path": "src/assets/fonts/Inter/Inter-Medium.ttf",
+      "sha1": "c1d25d8c10adb45a970e71c387bbd6380f10992d"
+    },
+    {
+      "path": "src/assets/fonts/Inter/Inter-Regular.ttf",
+      "sha1": "6e3430f906a4b42b4b63fd8f33e498a43d9f8d84"
+    },
+    {
+      "path": "src/assets/fonts/Inter/Inter-SemiBold.ttf",
+      "sha1": "b4bdaf6bdd6a479b46c452a7bbae13f5cb2079bf"
+    },
+    {
+      "path": "src/assets/fonts/Manrope/Manrope-Bold.otf",
+      "sha1": "565e1394efd6d908f63113602dcd58406e835131"
+    },
+    {
+      "path": "src/assets/fonts/Manrope/Manrope-Extrabold.otf",
+      "sha1": "5bbb310270b28d1ee1377f991e8470f8e92b21b4"
+    },
+    {
+      "path": "src/assets/fonts/Manrope/Manrope-Light.otf",
+      "sha1": "035471ca3d2c1b8848622b9280bdafb2294707f4"
+    },
+    {
+      "path": "src/assets/fonts/Manrope/Manrope-Medium.otf",
+      "sha1": "78bc698ce59edcb7bb5265fc3b1f298c075b2222"
+    },
+    {
+      "path": "src/assets/fonts/Manrope/Manrope-Regular.otf",
+      "sha1": "aca5e8005c3a46c98805d8be308687bdd78ee64f"
+    },
+    {
+      "path": "src/assets/fonts/Manrope/Manrope-Semibold.otf",
+      "sha1": "8cc718ba47d8830ac3a72d17a82cb97278c1ae2b"
+    },
+    {
+      "path": "src/assets/fonts/Manrope/Manrope-Thin.otf",
+      "sha1": "848fb61c290bdef44846ca1f7c6f0d8403b5bcd7"
+    },
+    {
+      "path": "src/assets/fonts/Manrope/OFL.txt",
+      "sha1": "5b50f74932f120512afa0c1e61772c7b119f3a4b"
+    },
+    {
+      "path": "src/assets/fonts/Manrope/README.md",
+      "sha1": "288476f3d0de8b8809f856223d09d848d393973a"
+    },
+    {
+      "path": "src/assets/fonts/Volkswagen-Serial-Black/Volkswagen-Serial-Black.ttf",
+      "sha1": "db98889e1ab4aeee40036a70102659ead64904a1"
+    }
+  ]
+}

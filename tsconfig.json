@@ -1,0 +1,21 @@
+{
+    "extends": "@react-native/typescript-config/tsconfig.json",
+    /* Recommended React Native TSConfig base */
+    "compilerOptions": {
+        /* Visit https://aka.ms/tsconfig.json to read more about this file */
+        /* Completeness */
+        "skipLibCheck": true,
+        /* Skip type checking all .d.ts files. */
+        "paths": {
+            "@core/*": ["./src/core/*"],
+            "@rootStore/*": ["./src/core/root-store/*"],
+            "@containers/*": ["./src/containers/*"],
+            "@hooks/*": ["./src/hooks/*"],
+            "@theme": ["./src/core/theme/index"],
+            "@appTypes/*": ["./src/core/types/*"],
+            "@assets/*": ["./src/assets/*"],
+            "@screens/*": ["./src/screens/*"],
+            "@components/*": ["./src/components/*"]
+        }
+    }
+}
