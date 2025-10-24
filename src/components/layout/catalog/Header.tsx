@@ -36,7 +36,7 @@ export const CatalogHeader = ({navigation, admin = false, handleToggleFilter, ha
                     {/* Header Title */}
                     <View style={styles.header}>
                         <Text style={styles.headerTitle}>Catálogo</Text>
-                        <Text style={styles.headerSubtitle}>(00)</Text>
+                        {/* <Text style={styles.headerSubtitle}>(00)</Text> */}
                     </View>
                 </View>
             )}

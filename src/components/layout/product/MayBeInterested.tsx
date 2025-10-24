@@ -4,6 +4,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { StackParams } from '@core/navigation';
 import apiHelpers from '@core/auth/apiHelpers';
 import { Text } from 'react-native-paper';
+import uuid from 'react-uuid';
 
 import { theme } from '@core/theme';
 import { Fonts } from '@core/constants/fontsContans';
@@ -53,12 +54,13 @@ export const MayBeInterested = (props: Props) => {
             <Text style={styles.text}>Te puede interesar</Text>
             <View style={styles.containerProd}>
                 <ScrollView
+                    key={uuid()}
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={styles.scrollContent}
                 >
                     {produts.map((obj) => (
-                        <View style={styles.productContainer}>
+                        <View style={styles.productContainer} key={`content-detail-interested-${obj.id}`}>
                             <ProductCard {...props} item={obj}/>
                         </View>
                     ))}

@@ -39,7 +39,7 @@ export const ProductOverview = ({ item }: Props) => {
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: 12,
-        marginVertical: 8,
+        marginVertical: 6,
         padding: 10
     },
     containerDesc: {

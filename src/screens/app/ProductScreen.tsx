@@ -5,10 +5,11 @@ import { Divider } from 'react-native-paper';
 import { StackParams } from '@core/navigation';
 import apiHelpers from '@core/auth/apiHelpers';
 import { theme } from '@core/theme';
+import uuid from 'react-uuid';
 
 import { ProductHeader } from '@components/layout/product/Header';
 import { ProductInfo } from '@components/layout/product/Info';
-import { ProductBanner } from '@components/layout/product/Banner';
+import { ProductBanner } from '@components/layout/product/ProductBanner';
 import { SellerInfo } from '@components/layout/product/Seller';
 import { ProductActions } from '@components/layout/product/Actions';
 import { ProductOverview } from '@components/layout/product/Overview';
@@ -62,6 +63,8 @@ export const ProductScreen = (props: Props) => {
             if (params && params.id) {
                 // OBTENER PRODUCTO POR ID.
                 const { data: { data } } = await apiHelpers.get<ProductIdResponse>(`producto/get/${params['id']}`);
+
+                console.log('GET PRODUCT ID - DATA: ', data);
                 // ASIGNACIÓN DE DATOS.
                 setProduct(data);
             }
@@ -82,6 +85,7 @@ export const ProductScreen = (props: Props) => {
         <View style={{flex: 1}}>
             <SafeAreaView style={styles.container}>
                 <ScrollView
+                    key={uuid()}
                     nestedScrollEnabled
                     keyboardDismissMode="on-drag"
                     keyboardShouldPersistTaps="handled"

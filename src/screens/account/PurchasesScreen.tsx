@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { FlatList, StyleSheet, View} from 'react-native';
+import { FlatList, Linking, StyleSheet, View} from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 //
 import { theme } from '@theme';
@@ -50,7 +50,7 @@ export const PurchasesScreen = (props: Props) => {
             // TOKEN PARA LAS PETICIONES.
             const { CancelToken } = axios;
 
-            const { data: { data } } = await apiHelpers.get<PendingOrderResponse>('pedido/getest', {
+            const { data: { data } } = await apiHelpers.get<PendingOrderResponse>('pedido/get', {
                 params: { ...filters },
                 cancelToken: new CancelToken(c => {
                     ordersReqRef.current = c;
@@ -74,7 +74,11 @@ export const PurchasesScreen = (props: Props) => {
             });
             setLoading(false);
             setIsFetching(false);
-            console.error(error);
+            // SE VALIDA SI EL ERROR ES DIFERENTE A CANCELADO
+            if (!axios.isCancel(error)) {
+                // LOG ERROR
+                console.error(error);
+            }
         }
     }, [filters, orders]);
 

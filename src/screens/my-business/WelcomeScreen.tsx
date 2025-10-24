@@ -3,6 +3,7 @@ import { SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import IconIonicon from 'react-native-vector-icons/Ionicons';
 import { Provider, Text } from 'react-native-paper';
+import uuid from 'react-uuid';
 //
 import { theme } from '@theme';
 import { StackParams } from '@core/navigation';
@@ -25,6 +26,7 @@ export const WelcomeScreen = ({ navigation }: Props) => {
         <Provider>
             <SafeAreaView style={{ flex: 1 }}>
                 <ScrollView
+                    key={uuid()}
                     nestedScrollEnabled
                     keyboardDismissMode="on-drag"
                     keyboardShouldPersistTaps="handled"

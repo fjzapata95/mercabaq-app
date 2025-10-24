@@ -31,7 +31,7 @@ export const ProductsCart = ({ product }: Props) => {
     }, [product]);
     
     return (
-        <View style={styles.container}>
+        <View style={styles.container} key={`card_product_${product.id}`}>
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <View style={styles.containerImg}>
                     <Image

@@ -1,8 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
+import { FlatList, SafeAreaView, StyleSheet, View} from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Text } from 'react-native-paper';
+import uuid from 'react-uuid';
 //
 import { theme } from '@theme';
 
@@ -20,6 +21,7 @@ import IconFeather from 'react-native-vector-icons/FontAwesome';
 import { ReduxState } from '@core/interfaces/redux.interfaces';
 import { clearCart } from '@core/root-store/actions/cart.action';
 import { CartProduct, Costs, GroupedProducts } from '@core/interfaces/cart.interfaces';
+import { NotFound } from '@components/NotFound';
 
 interface Props extends NativeStackScreenProps<StackParams> {}
 
@@ -74,6 +76,10 @@ export const ShoppingCartScreen = ({ navigation }: Props) => {
         }
     }, [isAuth]);
     
+    const renderItem = ({ item }: { item: any }) => (
+        <SellerProductsCart {...item} key={uuid()}/>
+    );
+    
     return (
         <View style={styles.container}>
             <AppBar 
@@ -99,22 +105,20 @@ export const ShoppingCartScreen = ({ navigation }: Props) => {
                 children={<IconFeather onPress={() => dispatch(clearCart())} name={'trash-o'} size={24} color={theme.colors.custom_green_dark} style={{padding: 10}} />}
             />
             <View style={styles.container}>
-                <SafeAreaView style={styles.container}>
-                    <ScrollView
-                        nestedScrollEnabled
-                        keyboardDismissMode="on-drag"
-                        keyboardShouldPersistTaps="handled"
-                        contentInsetAdjustmentBehavior="automatic"
-                        contentContainerStyle={styles.contentScroll}
-                    >
-                        {/** LISTADO DE PRODUCTOS AGRUPADOS POR VENDEDOR */}
-                        { groupProductsBySeller(cartProd).map(obj => (
-                            <SellerProductsCart {...obj}/>
-                        ))}
-                        {/** MONTO DE LA COMPRA */}
-                        <CartSummary handleCosts={setCosts} />
-                    </ScrollView>
-                </SafeAreaView>
+                <FlatList
+                    data={groupProductsBySeller(cartProd)}
+                    keyExtractor={(item, index) => `shopping_${item.sellerId}-${index}`}
+                    renderItem={renderItem}
+                    numColumns={1}
+                    style={{
+                        backgroundColor: theme.colors.background
+                    }}
+                    showsVerticalScrollIndicator={false}
+                    contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
+                    ListEmptyComponent={() => <NotFound text={'No se encontraron productos'} />}
+                />
+                {/** MONTO DE LA COMPRA */}
+                <CartSummary handleCosts={setCosts} />
                 <View style={{backgroundColor: theme.colors.background, padding: 12, flexDirection: 'row', justifyContent: 'space-between'}}>
                     <View style={{marginRight: 4}}>
                         <Text style={styles.text}>Total:</Text>
@@ -165,5 +169,5 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontFamily: Fonts.DMSansBold,
         color: theme.colors.custom_blue
-    },
+    }
 });

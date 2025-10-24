@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
 import { StackParams } from '@core/navigation';
 import { Text } from 'react-native-paper';
+import uuid from 'react-uuid';
 
 import { theme } from '@core/theme';
 import { Fonts } from '@core/constants/fontsContans';
@@ -54,12 +55,13 @@ export const SellerProducts = (props: Props) => {
             <Text style={styles.seller}>{props.item.vendedor}</Text>
             <View style={styles.containerProd}>
                 <ScrollView
+                    key={uuid()}
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={styles.scrollContent}
                 >
-                    {produts.map((obj) => (
-                        <View style={styles.productContainer}>
+                    {(produts || []).map((obj) => (
+                        <View style={styles.productContainer} key={`content-detail-product-${obj.id}`}>
                             <ProductCard {...props} item={obj}/>
                         </View>
                     ))}

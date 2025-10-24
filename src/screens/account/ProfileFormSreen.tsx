@@ -11,6 +11,7 @@ import { showAlert } from '@core/root-store/actions/util.action';
 import { AppBar } from '@components/AppBar';
 import { InfoText } from '@components/utils/InfoText';
 import { theme } from '@theme';
+import uuid from 'react-uuid';
 import apiHelpers from '@core/auth/apiHelpers';
 
 import TextInput from '@components/form/TextInput';
@@ -135,6 +136,7 @@ export const ProfileFormSreen = ({ navigation }: Props) => {
                         enabled
                     >
                         <ScrollView
+                            key={uuid()}
                             nestedScrollEnabled
                             keyboardDismissMode="on-drag"
                             keyboardShouldPersistTaps="handled"

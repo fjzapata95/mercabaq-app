@@ -62,7 +62,7 @@ export const CatalogFilter = ({ filters, visible, admin = false, handleToggleFil
         // LOANDING
         setLoadingCat(true);
         try {
-            const { data: { data, error } } = await apiHelpers.get<CategoryResponse>('categoria/get');
+            const { data: { data, error } } = await apiHelpers.get<CategoryResponse>('categoria/producto-count');
             // VALOR POR DEFECTO
             let result: Category[] = [];
             // VALIDAR SI SE OBTUVIERON DATOS
@@ -185,7 +185,7 @@ export const CatalogFilter = ({ filters, visible, admin = false, handleToggleFil
                             <View style={{marginHorizontal: 10}}>
                                 {categories && categories.map(obj => (
                                     <CheckboxInput key={`categoy_${obj.id}`} value={obj.id} isChecked={filters.categorias.includes(obj.id)} onChangeText={handleCategoryChange} style={styles.itemText}>
-                                        {obj.title}
+                                        {obj.name} {obj.count ? `(${obj.count})` : '(0)'}
                                     </CheckboxInput>
                                 ))}
                                 {/* CONTENEDEDOR - LOANDING */}

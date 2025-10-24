@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import { Avatar, Divider, Text } from 'react-native-paper';
+import uuid from 'react-uuid';
 
 import { theme } from '@core/theme';
 import { Fonts } from '@core/constants/fontsContans';
@@ -10,7 +11,7 @@ import { GroupedProducts } from '@core/interfaces/cart.interfaces';
 
 export const SellerProductsCart = ({ seller, sellerId, products }: GroupedProducts) => {
     return (
-        <View key={`shoppint_seller_${sellerId}`} style={styles.container}>
+        <View key={`shoppint_seller_${sellerId}_id`} style={styles.container}>
             <View style={{flexDirection: 'row', alignSelf: 'flex-start'}}>
                 <Avatar.Icon
                     size={52}
@@ -30,7 +31,7 @@ export const SellerProductsCart = ({ seller, sellerId, products }: GroupedProduc
             <Divider style={{marginVertical: 10}} />
             {/** PRODUCTOS DEL VENDEDOR */}
             {products && products.map(item => (
-                <ProductsCart product={item} />
+                <ProductsCart product={item} key={uuid()} />
             ))}
         </View>
     );

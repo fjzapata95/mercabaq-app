@@ -36,7 +36,7 @@ const OrderSummaryModal = ({ navigation, order, visible, handleToggle }: Props) 
                     <View style={styles.iconContainer}>
                         <Image source={require('@assets/image/confetti.png')} style={{width: 120, height: 120}} />
                     </View>
-                    <Text style={styles.title}>¡Su pago ha sido exitoso!</Text>
+                    <Text style={styles.title}>¡Su pedido se ha generado exitosamente!</Text>
                     <Text style={styles.orderNumber}>Número de la orden:</Text>
                     <Text style={styles.orderId}>#{order.id}</Text>
 

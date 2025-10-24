@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Linking, StyleSheet, View } from 'react-native';
 import { Card, Chip, Text } from 'react-native-paper';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { theme } from '@core/theme';
 import { Fonts } from '@core/constants/fontsContans';
 import { StackParams } from '@core/navigation';
@@ -11,12 +12,49 @@ import ButtonCustom from '@components/form/ButtonCustom';
 import { formatPrice } from '@core/utils/format';
 import moment from 'moment';
 
+import { useDispatch } from 'react-redux';
+import { showAlert } from '@core/root-store/actions/util.action';
+
 interface Props {
     order: Order;
     navigation: NativeStackNavigationProp<StackParams, any, undefined>
 }
 
 export const CardOrder = ({ order, navigation }: Props) => {
+    // REDUX - DISPACH ACTION.
+    const dispatch = useDispatch();
+
+    const normalizeWhatsAppNumber = (raw: string, defaultCountryCode = "57") => {
+        if (!raw) return null;
+        const digits = raw.replace(/\D+/g, "");
+        if (!digits) return null;
+        if (digits.length === 10) return defaultCountryCode + digits; // ej: CO nacional
+        if (digits.startsWith("00")) return digits.slice(2);          // 00XX... -> internacional
+        return digits;                                                // ya incluye código país
+    };
+
+    const handleChatWithSeller = async (order: any) => {
+        try {
+            const negocio = order?.detalles?.[0]?.negocio?.[0];
+            const raw = negocio?.whatsapp ?? negocio?.telefono ?? negocio?.celular;
+
+            const phone = normalizeWhatsAppNumber(raw, "57"); // 🇨🇴
+
+            if (!phone) {
+                // MENSAJE POR DEFECTO
+                dispatch(showAlert({show: true, message: 'No encontramos un número de WhatsApp válido del vendedor.'}));
+
+                return;
+            }
+
+            const msg = `Hola, tengo una consulta sobre el pedido #${order?.id ?? ""}.`;
+
+            // Abrir WhatsApp Web / App
+            Linking.openURL(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`);
+        } catch (e) {
+            console.error(e);
+        }
+    };
     
     return (
         <Card style={styles.card}>
@@ -76,6 +114,30 @@ export const CardOrder = ({ order, navigation }: Props) => {
                         >
                             {order.estado}
                         </Chip>
+                        <ButtonCustom
+                            mode={'outlined'}
+                            style={{
+                                borderRadius: 10,
+                                borderColor: theme.colors.custom_green_dark,
+                            }}
+                            contentStyle={{
+                                borderRadius: 10,
+                                borderWidth: 1,
+                                borderColor: theme.colors.custom_green_dark
+                            }}
+                            labelStyle={{
+                                fontSize: 14,
+                                fontFamily: Fonts.ManropeMedium
+                            }}
+                            textColor={theme.colors.custom_green_dark}
+                            onPress={() => handleChatWithSeller(order)}
+                        >
+                            <Icon
+                                name="logo-whatsapp"
+                                color={theme.colors.custom_green_dark}
+                                size={26}
+                            />
+                        </ButtonCustom>
                     </View>
                 </View>
             </Card.Content>

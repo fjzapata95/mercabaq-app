@@ -3,6 +3,7 @@ import { View, StyleSheet, ScrollView, SafeAreaView, Text } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { StackParams } from '@core/navigation';
 import { theme } from '@core/theme';
+import uuid from 'react-uuid';
 
 import apiHelpers from '@core/auth/apiHelpers';
 
@@ -67,13 +68,14 @@ export const OrderDetailScreen = (props: Props) => {
             <View style={styles.container}>
                 <SafeAreaView style={styles.container}>
                     <ScrollView
+                        key={uuid()}
                         nestedScrollEnabled
                         keyboardDismissMode="on-drag"
                         keyboardShouldPersistTaps="handled"
                         contentInsetAdjustmentBehavior="automatic"
                         contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
                     >
-                        <View style={styles.body}>
+                        <View key={uuid()} style={styles.body}>
                             <View>
                                 <Text style={{
                                     fontSize: 14,
@@ -109,7 +111,7 @@ export const OrderDetailScreen = (props: Props) => {
                                 </Text>
                             </View>
                             {detail && detail.map(obj => (
-                                <OrderIdDetail detail={obj} />
+                                <OrderIdDetail detail={obj} key={`orden-detail-${obj.id}`} />
                             ))}
                         </View>
                     </ScrollView>

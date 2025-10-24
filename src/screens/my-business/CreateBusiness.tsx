@@ -55,14 +55,16 @@ export const CreateBusiness = (props: Props) => {
         tipoDocumento: '',
         nombreRazonSocial: '',
         nombreMostrar: '',
-        numeroDocumento: ''
+        numeroDocumento: '',
+        whatsapp: '',
     });
     const [errorText, setErrorText] = useState({
         tipoPersona: '',
         tipoDocumento: '',
         nombreRazonSocial: '',
         nombreMostrar: '',
-        numeroDocumento: ''
+        numeroDocumento: '',
+        whatsapp: '',
     });
 
     /**
@@ -75,16 +77,20 @@ export const CreateBusiness = (props: Props) => {
             tipoDocumento: { required: true },
             nombreRazonSocial: { required: true },
             nombreMostrar: { required: true },
-            numeroDocumento: { required: true }
+            numeroDocumento: { required: true },
+            whatsapp: { required: false, digits: true },
         });
         //
         if (validator.valid) {
             // LOANDING
             setIsSubmitting(true);
             try {
-                const { data: { data, error, message } } = await apiHelpers.post<BusinessResponse>('negocio/create', form);
-
-                console.log('create', data)
+                const { data: { data, error, message } } = await apiHelpers.post<BusinessResponse>('negocio/create', {...form, whatsapp: (() => {
+                    const phone = (form.whatsapp || "").replace(/\s/g, "");
+                    return phone.startsWith("+57")
+                    ? phone
+                    : `+57${phone.replace(/^(\+)?57/, "")}`;
+                })()});
                 // VALIDAR 
                 if ( error ) {
                     // MENSAJE PARA EL CLIENTE
@@ -188,6 +194,14 @@ export const CreateBusiness = (props: Props) => {
                                         value={form.numeroDocumento}
                                         onChangeText={value => onChange(value, 'numeroDocumento')}
                                         error={errorText.numeroDocumento !== ''}
+                                    />
+                                    <TextInput
+                                        label={'Whatsapp'}
+                                        placeholder={'3000000000'}
+                                        returnKeyType="next"
+                                        value={form.whatsapp}
+                                        onChangeText={value => onChange(value, 'whatsapp')}
+                                        error={errorText.whatsapp !== ''}
                                     />
                                     {/** BUTTONS */}
                                     <View style={{paddingHorizontal: 8, marginBottom: 10, alignSelf: 'center'}}>

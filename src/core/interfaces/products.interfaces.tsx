@@ -56,7 +56,7 @@ export interface ImagesResponse {
   
 export interface Images {
     producto: string
-    images: string[]
+    images: any[]
 }
 
 export interface ProductCreateResponse {

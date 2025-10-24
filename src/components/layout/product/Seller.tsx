@@ -30,7 +30,7 @@ export const SellerInfo = ({ item }: Props) => {
                     </View>
                 </View>
             </View>
-            <ButtonCustom
+            {/*<ButtonCustom
                 mode={'outlined'}
                 style={styles.button}
                 contentStyle={{
@@ -46,7 +46,7 @@ export const SellerInfo = ({ item }: Props) => {
                 onPress={() => console.log('Visitar vendedor')}
             >
                 Visitar vendedor
-            </ButtonCustom>
+            </ButtonCustom>*/ }
         </View>
     );
 };

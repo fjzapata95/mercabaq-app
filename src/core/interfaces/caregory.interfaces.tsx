@@ -8,5 +8,7 @@ export interface Category {
     id: number;
     title: string;
     image: string;
-    status: boolean
+    status: boolean;
+    name: string;
+    count?: number | null;
 }

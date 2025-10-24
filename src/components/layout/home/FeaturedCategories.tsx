@@ -3,6 +3,7 @@ import { StyleSheet, View, ScrollView, Pressable } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Text } from 'react-native-paper';
 import { theme } from '@core/theme';
+import uuid from 'react-uuid';
 
 import { Fonts } from '@core/constants/fontsContans';
 import { CardCategory } from '@components/card/CardCategory';
@@ -12,34 +13,6 @@ import { Category, CategoryResponse } from '@core/interfaces/caregory.interfaces
 import apiHelpers from '@core/auth/apiHelpers';
 import { LoandingPage } from '@components/LoandingPage';
 import { NotFound } from '@components/NotFound';
-
-const CATEGORIES = [
-    {
-        id: 1,
-        title: "Frutas y Verduras",
-        image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 2,
-        title: "Carnes",
-        image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 3,
-        title: "Lácteos y Huevos",
-        image: "https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 4,
-        title: "Panadería",
-        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 5,
-        title: "Abarrotes",
-        image: "https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=500&q=80"
-    }
-];
 
 interface Props extends NativeStackScreenProps<StackParams> {}
 
@@ -59,7 +32,7 @@ export const FeaturedCategories = ({ navigation }: Props) => {
             // VALOR POR DEFECTO
             let result: Category[] = [];
             // VALIDAR SI SE OBTUVIERON DATOS
-            if (!error) result = data;
+            if (!error) result = data.filter((obj: any) => obj.status);;
             // ASIGNAR DATOS
             setCategories(result);
             setLoading(false);
@@ -80,6 +53,7 @@ export const FeaturedCategories = ({ navigation }: Props) => {
                 Categorías destacadas
             </Text>
             <ScrollView
+                key={uuid()}
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={styles.scrollContent}

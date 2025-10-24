@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Provider } from 'react-native-paper';
+import uuid from 'react-uuid';
 
 import { Banner } from '@components/layout/home/Banner';
 import { FeaturedCategories } from '@components/layout/home/FeaturedCategories';
@@ -16,6 +17,7 @@ export const HomeScreen = (props: Props) => {
         <Provider>
             <SafeAreaView style={styles.container}>
                 <ScrollView
+                    key={uuid()}
                     nestedScrollEnabled
                     keyboardDismissMode="on-drag"
                     keyboardShouldPersistTaps="handled"

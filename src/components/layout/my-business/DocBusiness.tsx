@@ -1,16 +1,11 @@
 import React, { useCallback, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
-import apiHelpers from '@core/auth/apiHelpers';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 
 import { theme } from '@core/theme';
 import { Fonts } from '@core/constants/fontsContans';
-import { Address, AddressesRequest } from '@core/interfaces/address.interfaces';
 
-import TextInput from '@components/form/TextInput';
-import { useForm } from '@hooks/useForm';
 import ButtonSubmit from '@components/form/ButtonSubmit';
 import { validateForm } from '@core/auth/formValidator';
 import { showAlert } from '@core/root-store/actions/util.action';

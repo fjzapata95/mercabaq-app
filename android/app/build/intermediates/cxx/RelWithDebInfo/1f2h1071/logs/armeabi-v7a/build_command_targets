@@ -1,7 +1,0 @@
-/Volumes/MacExternal/User/Library/Android/sdk/cmake/3.22.1/bin/ninja \
-  -C \
-  /Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/.cxx/RelWithDebInfo/1f2h1071/armeabi-v7a \
-  appmodules \
-  react_codegen_rnscreens \
-  react_codegen_rnsvg \
-  react_codegen_safeareacontext

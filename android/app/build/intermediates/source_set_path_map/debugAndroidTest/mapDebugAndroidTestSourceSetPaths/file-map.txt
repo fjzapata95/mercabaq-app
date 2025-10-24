@@ -1,4 +1,0 @@
-com.app.test.app-androidTest-0 /Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/build/generated/res/resValues/androidTest/debug
-com.app.test.app-mergeDebugAndroidTestResources-1 /Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
-com.app.test.app-mergeDebugAndroidTestResources-2 /Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
-com.app.test.app-debugAndroidTest-3 /Volumes/MacExternal/Projects/Webtic/mercabaq-app/android/app/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources

@@ -89,7 +89,7 @@ export const Summary = ({ handleCosts }: Props) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: theme.colors.background,
-        padding: 10
+        padding: 4
     },
     row: {
         flexDirection: 'row',

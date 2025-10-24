@@ -148,7 +148,7 @@ export const CheckoutScreen = ({ navigation }: Props) => {
                         // OBTENER IDSESION
                         const { sessionId } = response.data.data;
                         // OPEN EPAYCO
-                        openEpayco(sessionId);
+                        // openEpayco(sessionId);
                     }
                     // DATO DE LOS COSTOS
                     setOrderSummary((item) => ({
@@ -238,7 +238,7 @@ export const CheckoutScreen = ({ navigation }: Props) => {
                                 theme={{ colors: { ...theme.colors, background: 'transparent' } }}
                             > 
                                 <View style={styles.itemBody}>
-                                    <DeliveryMethod onChangeText={onChange} data={form} next={handlePress} />
+                                    <DeliveryMethod onChangeText={onChange} data={form} next={handlePress} key={`delivery_method_id`} />
                                 </View>
                             </List.Accordion>
                             
@@ -307,7 +307,7 @@ export const CheckoutScreen = ({ navigation }: Props) => {
                                 theme={{ colors: { ...theme.colors, background: 'transparent' } }}
                             >
                                 <View style={styles.itemBody}>
-                                    <Confirmation handleCosts={handleCosts}/>
+                                    <Confirmation handleCosts={handleCosts} key={`delivery_confirmation_id`}/>
                                 </View>
                             </List.Accordion>
                         </List.AccordionGroup>

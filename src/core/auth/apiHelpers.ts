@@ -23,7 +23,7 @@ apiHelpers.interceptors.request.use(
         // OBTENER TOKEN - VALOR POR DEFECTO NULL
         const MERCABAQ_TOKEN_API = await AsyncStorage.getItem(MERCABAQ_TOKEN_SESSION);
         // ASIGNAR BASE URL CONFIGURADA.
-        config.baseURL = `https://apinod.jointerp.com:12098/api/v2/`;
+        config.baseURL = `https://apinod.jointerp.com/api/v2/`;
         // VALIDAR CABECERA Y TOKEN.
         if (config && MERCABAQ_TOKEN_API) {
             // ASIGNAR TOKEN.
@@ -52,7 +52,11 @@ apiHelpers.interceptors.response.use((response) =>  {
             handleLogout();       
         }
     }
-    console.log('interceptors: ', error?.response?.data || error?.response || error)
+    // SE VALIDA SI EL ERROR ES DIFERENTE A CANCELADO
+    if (!axios.isCancel(error)) {
+        // LOG ERROR
+        console.log('interceptors: ', error?.response?.data || error?.response || error)
+    }
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     return Promise.reject(error.response || error);

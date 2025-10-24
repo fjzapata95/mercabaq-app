@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import uuid from 'react-uuid';
 //
 import { theme } from '@theme';
 import { StackParams } from '@core/navigation';
@@ -126,6 +127,7 @@ export const CreateAddressScreen = (props: Props) => {
             />
             <SafeAreaView style={styles.container}>
                 <ScrollView
+                    key={uuid()}
                     nestedScrollEnabled
                     keyboardDismissMode="on-drag"
                     keyboardShouldPersistTaps="handled"

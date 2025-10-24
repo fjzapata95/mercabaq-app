@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { Card, IconButton, TextInput as Input, Text } from 'react-native-paper';
+import { Card, TextInput as Input, Text } from 'react-native-paper';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
@@ -9,12 +9,13 @@ import { theme } from '@core/theme';
 import ButtonCustom from '@components/form/ButtonCustom';
 import TextInput from '@components/form/TextInput';
 
+import { formatPrice } from '@core/utils/format';
 import { Fonts } from '@core/constants/fontsContans';
 import { StackParams } from '@core/navigation';
 import { Product } from '@core/interfaces/products.interfaces';
 import { ReduxState } from '@core/interfaces/redux.interfaces';
 import { addItemToCart, removeItemFromCart } from '@core/root-store/actions/cart.action';
-import { formatPrice } from '@core/utils/format';
+import { showAlert } from '@core/root-store/actions/util.action';
 
 const { width } = Dimensions.get('window'); // Obtener el ancho de la pantalla
 
@@ -59,9 +60,22 @@ export const ProductCard = ({ item, admin = false, navigation }: Props) => {
      * ADICIONAR PRODUCTO
      */
     const handleAddToCart = useCallback(() => {
-        // ADICIONAR O MODIFICAR PRODUCTO.
-        dispatch(addItemToCart({...item, quantity: quantity}));
-    }, [item, quantity]);
+        // Obtener el/los seller(s) actuales en el carrito
+        const sellersInCart = Array.isArray(cartProd)
+        ? Array.from(new Set(cartProd.map(p => p.seller).filter(Boolean)))
+        : [];
+        // Tomar el primer seller como el actual
+        const currentSeller = sellersInCart[0] ?? null;
+
+        // 2) Si el carrito está vacío o coincide el seller → agregar
+        if (sellersInCart.length === 0 || currentSeller === item.seller) {
+            // ADICIONAR O MODIFICAR PRODUCTO.
+            dispatch(addItemToCart({...item, quantity: quantity}));
+        } else {
+            // Mostrar mensaje de error o advertencia
+            dispatch(showAlert({show: true, message: 'No puedes agregar productos de diferentes vendedores. Vacía el carrito antes de agregar este producto.', type: 'error'}));
+        }
+    }, [item, quantity, cartProd]);
     
     useEffect(() => {
         if (item && item.id && cartProd) {
@@ -94,12 +108,12 @@ export const ProductCard = ({ item, admin = false, navigation }: Props) => {
                         resizeMode="cover"
                     />
                 </TouchableOpacity>
-                <IconButton
+                {/* <IconButton
                     icon={item.isFavorite ? 'bookmark' : 'bookmark-outline'}
                     iconColor={theme.colors.custom_green_dark}
                     style={styles.favoriteButton}
                     // onPress={onFavorite}
-                />
+                /> */}
             </View>
             <Card.Content style={styles.containerProd}>
                 <Text style={{
@@ -137,7 +151,6 @@ export const ProductCard = ({ item, admin = false, navigation }: Props) => {
                             style={styles.star}
                         />
                     ))}
-                    <Text style={styles.reviewCount}>({item.reviewCount})</Text>
                 </View>
                 <Text style={[styles.stockText, getStockStyle()]}>
                     {item.disponible}

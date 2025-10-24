@@ -5,5 +5,6 @@ export interface Filters {
     vendedores: number[]
     tiposEnvio: number[]
     precioMin: number
-    precioMax: number
+    precioMax: number,
+    init: boolean
 }

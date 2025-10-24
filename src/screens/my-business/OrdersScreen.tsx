@@ -55,6 +55,7 @@ export const OrdersScreen = (props: Props) => {
                     ordersReqRef.current = c;
                 })
             });
+
             // ASIGNAR DARA
             setOrders(() => ({
                 data: page === 1 ? data.data : [...orders.data, ...data.data],
@@ -73,7 +74,11 @@ export const OrdersScreen = (props: Props) => {
             });
             setLoading(false);
             setIsFetching(false);
-            console.error(error);
+            // SE VALIDA SI EL ERROR ES DIFERENTE A CANCELADO
+            if (!axios.isCancel(error)) {
+                // LOG ERROR
+                console.error(error);
+            }
         }
     }, [filters, orders]);
 

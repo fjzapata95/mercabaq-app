@@ -35,13 +35,14 @@ export const CatalogScreen = (props: Props) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isFetching, setIsFetching] = useState<boolean>(false);
     const [filters, onFilters] = useState<Filters>({
-        page: 0,
+        page: 1,
         filtro: '',
         categorias: [],
         vendedores: [],
         tiposEnvio: [],
         precioMin: 0,
-        precioMax: 1000000
+        precioMax: 1000000,
+        init: true
     });
     const [productsState, setProductsState] = useState<Data>({
         data: [],
@@ -87,20 +88,27 @@ export const CatalogScreen = (props: Props) => {
             }));
             setIsLoading(false);
             setIsFetching(false);
+            if (filters.init) {
+                onFilters((filters) => ({
+                    ...filters,
+                    init: false
+                }));
+            }
         } catch (error) {
-            //
-            console.log('GET PRODUCTS - ERROR: ', error, typeof error);
+            if (!axios.isCancel(error)) {
+                console.log('GET PRODUCTS - ERROR: ', error, typeof error);
+            }
             // 
             setIsLoading(false);
             setIsFetching(false);
-        }
+        } 
     }, [filters]);
     /**
      * 
      */
     const onScroll = useCallback(() => {
         // SE VALIDA QUE NO SE ESTE HACIENDO UNA BÚSQUEDA.
-        if (!filters.filtro) {
+        if (!filters.filtro && !filters.init) {
             setIsFetching(true);
             // OBTENER PAGINA ACTUAL
             const { page } = filters;
@@ -164,7 +172,6 @@ export const CatalogScreen = (props: Props) => {
         <View style={styles.container}>
             {/** HEADER - OPTIONS FILTERS */}
             <CatalogHeader handleToggleFilter={onToggleFilter} handleToggleSort={onTogglePriceRange} {...props}/>
-
             <View style={styles.container}>
                 <FlatList
                     data={productsState.data}
@@ -191,7 +198,6 @@ export const CatalogScreen = (props: Props) => {
                     />
                 )}
             </View>
-
             {/** COMPONENT - FILTRO DE CATALOGO */}
             <CatalogFilter filters={filters} visible={toggleFilter} handleToggleFilter={onToggleFilter} onChangeFilter={onChangeFilter} />
             {/** COMPONENT - ORDENAMIENTO DE CATALOGO */}

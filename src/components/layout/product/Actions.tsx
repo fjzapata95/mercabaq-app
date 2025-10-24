@@ -11,6 +11,7 @@ import { Product } from '@core/interfaces/products.interfaces';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { ReduxState } from '@core/interfaces/redux.interfaces';
 import { addItemToCart } from '@core/root-store/actions/cart.action';
+import { showAlert } from '@core/root-store/actions/util.action';
 
 interface Props {
     item: Product
@@ -36,8 +37,21 @@ export const ProductActions = ({ item }: Props) => {
      * ADICIONAR/MODIFICAR PRODUCTO
      */
     const handleAddToCart = useCallback(() => {
-        // ADICIONAR O MODIFICAR PRODUCTO.
-        dispatch(addItemToCart({...item, quantity: quantity}));
+        // Obtener el/los seller(s) actuales en el carrito
+        const sellersInCart = Array.isArray(cartProd)
+        ? Array.from(new Set(cartProd.map(p => p.seller).filter(Boolean)))
+        : [];
+        // Tomar el primer seller como el actual
+        const currentSeller = sellersInCart[0] ?? null;
+
+        // 2) Si el carrito está vacío o coincide el seller → agregar
+        if (sellersInCart.length === 0 || currentSeller === item.seller) {
+            // ADICIONAR O MODIFICAR PRODUCTO.
+            dispatch(addItemToCart({...item, quantity: quantity}));
+        } else {
+            // Mostrar mensaje de error o advertencia
+            dispatch(showAlert({show: true, message: 'No puedes agregar productos de diferentes vendedores. Vacía el carrito antes de agregar este producto.', type: 'error'}));
+        }
     }, [item, quantity]);
 
     useEffect(() => {
