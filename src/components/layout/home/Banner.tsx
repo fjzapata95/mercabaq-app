@@ -15,10 +15,6 @@ const slides: { key: string, image: any }[] = [
     {
         key: 'guide-one',
         image: require("@assets/image/slider.png")
-    },
-    {
-        key: 'guide-two',
-        image: require("@assets/image/slider.png")
     }
 ];
 
@@ -67,7 +63,7 @@ export const Banner = () => {
                 }}
             />
 
-            <PaginationBanner<{ key: string }>
+            {/** <PaginationBanner<{ key: string }>
 				progress={progress}
 				data={slides.map(({ key }) => ({ key }))}
 				size={10}
@@ -89,7 +85,7 @@ export const Banner = () => {
 				]}
 				horizontal
 				onPress={onPressPagination}
-			/>
+			/> */ }
         </View>
     );
 };

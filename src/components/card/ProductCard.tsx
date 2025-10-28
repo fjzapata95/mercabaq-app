@@ -171,6 +171,7 @@ export const ProductCard = ({ item, admin = false, navigation }: Props) => {
                                 fontFamily: Fonts.ManropeBold
                             }}
                             style={{
+                                width: 'auto',
                                 height: 40,
                                 marginVertical: 16
                             }}

@@ -108,7 +108,7 @@ export const CheckoutScreen = ({ navigation }: Props) => {
             terms: { require: true }
         });
         //
-        if (validator.valid) {
+        if (validator.valid && form.terms.toString() == '1') {
             // OBTENER DETALLE DEL PEDIDO
             const detail = await cartProd.map(obj => {
                 return {
@@ -173,6 +173,9 @@ export const CheckoutScreen = ({ navigation }: Props) => {
                 setIsSubmitting(false);
                 console.error(error);
             }
+        } 
+        else if(form.terms.toString() != '1') {
+            dispatch(showAlert({show: true, message: 'Debe aceptar los términos y condiciones para continuar.'}));
         }
     }, [cartProd, form, user]);
 
